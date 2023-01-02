@@ -47,10 +47,7 @@ fun StartScreen() {
             modifier = Modifier.padding(bottom = 20.dp)
         )
         Button(
-            onClick = {
-                println(login.value)
-                println(password.value)
-            },
+            onClick = {},
             content = { Text(strings.enter) },
             modifier = Modifier.fillMaxWidth().padding(horizontal = 100.dp).height(50.dp)
         )
