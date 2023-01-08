@@ -1,4 +1,3 @@
-import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -27,6 +26,9 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation("org.kodein.di:kodein-di:7.16.0")
+                implementation("io.github.alexgladkov:odyssey-core:1.3.0")
+                implementation("io.github.alexgladkov:odyssey-compose:1.3.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
             }
         }
         val jvmTest by getting

@@ -16,7 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import di.appModules
+import navigation.HOME_SCREEN
 import org.kodein.di.instance
+import ru.alexgladkov.odyssey.compose.extensions.push
+import ru.alexgladkov.odyssey.compose.local.LocalRootController
 import strings.Strings
 
 @Preview
@@ -25,6 +28,7 @@ fun StartScreen() {
 
     val strings by appModules.di.instance<Strings>()
     val viewModel by appModules.di.instance<StartVM>()
+    val navController = LocalRootController.current
     val login = remember { viewModel.login }
     val password = remember { viewModel.password }
 
@@ -47,7 +51,7 @@ fun StartScreen() {
             modifier = Modifier.padding(bottom = 20.dp)
         )
         Button(
-            onClick = {},
+            onClick = { navController.push(HOME_SCREEN) },
             content = { Text(strings.enter) },
             modifier = Modifier.fillMaxWidth().padding(horizontal = 100.dp).height(50.dp)
         )
