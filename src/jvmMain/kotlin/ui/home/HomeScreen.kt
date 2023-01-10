@@ -2,6 +2,7 @@ package ui.home
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation.Horizontal
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.onClick
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import data.Training
 import kotlinx.coroutines.launch
+import navigation.TRAINING_SCREEN
+import ru.alexgladkov.odyssey.compose.extensions.push
+import ru.alexgladkov.odyssey.compose.local.LocalRootController
 
 val trainings = listOf(
     Training("FirstTraining", ""),
@@ -82,11 +87,14 @@ fun TrainingsRow() {
 
 @Composable
 fun TrainingItem(title: String) {
+
+    val navController = LocalRootController.current
+
     Box(
         Modifier.size(200.dp, 70.dp).padding(horizontal = 10.dp).clip(RoundedCornerShape(4.dp))
             .background(Color.Magenta),
         contentAlignment = Alignment.BottomCenter
     ) {
-        Text(title)
+        Text(title, Modifier.clickable { navController.push(TRAINING_SCREEN) })
     }
 }
