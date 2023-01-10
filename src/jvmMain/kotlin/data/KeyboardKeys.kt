@@ -1,5 +1,8 @@
 package data
 
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.toUpperCase
+
 val firstKeyboardRow = listOf(
     "Tab" to "\t"[0].code,
     "q" to "q"[0].code,
@@ -29,6 +32,7 @@ val secondKeyboardRow = listOf(
 )
 
 val thirdKeyboardRow = listOf(
+    "shift" to -1,
     "z" to "z"[0].code,
     "x" to "x"[0].code,
     "c" to "c"[0].code,
@@ -55,3 +59,21 @@ val numberKeyboardRow = listOf(
     "-" to "-"[0].code,
     "=" to "="[0].code
 )
+
+val capFirstKeyboardRow = firstKeyboardRow.map {
+    if (it.first == "Tab") {
+        return@map it.first to it.second
+    }
+    it.first.toUpperCase(Locale.current) to it.first.toUpperCase(Locale.current)[0].code
+}
+
+val capSecondKeyboardRow = secondKeyboardRow.map {
+    it.first.toUpperCase(Locale.current) to it.first.toUpperCase(Locale.current)[0].code
+}
+
+val capThirdKeyboardRow = thirdKeyboardRow.map {
+    if (it.first == "shift") {
+        return@map it.first to it.second
+    }
+    it.first.toUpperCase(Locale.current) to it.first.toUpperCase(Locale.current)[0].code
+}

@@ -92,9 +92,9 @@ fun TrainingItem(title: String) {
 
     Box(
         Modifier.size(200.dp, 70.dp).padding(horizontal = 10.dp).clip(RoundedCornerShape(4.dp))
-            .background(Color.Magenta),
+            .background(Color.Magenta).clickable { navController.push(TRAINING_SCREEN) },
         contentAlignment = Alignment.BottomCenter
     ) {
-        Text(title, Modifier.clickable { navController.push(TRAINING_SCREEN) })
+        Text(title)
     }
 }
